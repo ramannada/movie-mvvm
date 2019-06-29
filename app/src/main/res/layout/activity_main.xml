@@ -18,7 +18,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-            <com.github.ramannada.paprikamovie.component.SearchEditText
+            <com.github.ramannada.movie.component.SearchEditText
                     android:id="@+id/set_movie"
                     android:layout_width="match_parent"
                     android:layout_alignParentTop="true"
