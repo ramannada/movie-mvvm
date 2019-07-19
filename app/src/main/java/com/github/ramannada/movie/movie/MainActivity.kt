@@ -4,6 +4,7 @@ import android.app.SearchManager
 import android.content.Context
 import android.os.Bundle
 import android.view.Menu
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
@@ -60,7 +61,6 @@ class MainActivity : AppCompatActivity(), MovieAdapter.MovieClickListener {
             ).show()
             else {
                 rv_movie.clearOnScrollListeners()
-                adapter.clearMovie()
                 mainViewModel.searchMovie(it, 1)
                 rv_movie.addOnScrollListener(scrollListener)
             }
@@ -73,17 +73,29 @@ class MainActivity : AppCompatActivity(), MovieAdapter.MovieClickListener {
 
         mainViewModel.apply {
             movie.observe(this@MainActivity, Observer {
-                adapter.addMovie(it)
+                adapter.data(it)
             })
 
             message.observe(this@MainActivity, Observer {
                 if (!it.isNullOrBlank()) Toast.makeText(this@MainActivity, it, Toast.LENGTH_SHORT).show()
             })
+
+            messageBody.observe(this@MainActivity, Observer {
+                if (!it.isNullOrBlank()) {
+                    rv_movie.visibility = View.GONE
+                    tv_msg_body.apply {
+                        visibility = View.VISIBLE
+                        text = it
+                    }
+                } else {
+                    rv_movie.visibility = View.VISIBLE
+                    tv_msg_body.visibility = View.GONE
+                }
+            })
         }
 
         srl_movie.setOnRefreshListener {
             srl_movie.isRefreshing = false
-            adapter.clearMovie()
 
             query.let {
                 if (it.isNullOrBlank()) {
@@ -107,7 +119,6 @@ class MainActivity : AppCompatActivity(), MovieAdapter.MovieClickListener {
                         query?.let {
                             if (it.isNotBlank()) {
                                 this@MainActivity.mainViewModel.searchMovie(it, 1)
-                                adapter.clearMovie()
                             }
                         }
                         return true

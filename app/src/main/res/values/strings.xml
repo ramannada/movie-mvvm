@@ -3,4 +3,6 @@
     <string name="msg_empty_search">Please fill movie title to be search</string>
     <string name="hint_movie_title">Movie title</string>
     <string name="search">Cari</string>
+    <string name="msg_no_data">Tidak ada data</string>
+    <string name="format_msg_search_not_found">Pencarian %1$s tidak ditemukan</string>
 </resources>

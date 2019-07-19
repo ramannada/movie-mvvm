@@ -11,8 +11,8 @@ import org.koin.dsl.module
  */
 object ViewModelModule {
     val viewModelModule = module {
-        viewModel { MainViewModel(get()) }
+        viewModel { MainViewModel(get(), get()) }
 
-        viewModel { (id: Int) -> MovieDetailViewModel(id, get()) }
+        viewModel { (id: Int) -> MovieDetailViewModel(id, get(), get()) }
     }
 }
