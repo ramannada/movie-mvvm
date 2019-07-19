@@ -3,6 +3,7 @@ package com.github.ramannada.movie.koin
 import com.androidnetworking.gsonparserfactory.GsonParserFactory
 import com.github.ramannada.movie.BuildConfig
 import com.github.ramannada.movie.network.ApiService
+import com.github.ramannada.movie.repository.ResourceRepository
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -32,5 +33,7 @@ object AppModule {
 
         // api service
         single { ApiService }
+
+        single { ResourceRepository(get()) }
     }
 }

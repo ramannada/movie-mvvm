@@ -6,12 +6,14 @@ import com.androidnetworking.interfaces.ParsedRequestListener
 import com.github.ramannada.movie.base.BaseViewModel
 import com.github.ramannada.movie.network.ApiService
 import com.github.ramannada.movie.network.response.MovieDetail
+import com.github.ramannada.movie.repository.ResourceRepository
 
 /**
  * Created by labibmuhajir on 2019-06-29.
  * labibmuhajir@yahoo.com
  */
-class MovieDetailViewModel(val id: Int, apiService: ApiService) : BaseViewModel(apiService) {
+class MovieDetailViewModel(val id: Int, apiService: ApiService, resourceRepository: ResourceRepository) :
+    BaseViewModel(apiService, resourceRepository) {
     val movieDetail = MutableLiveData<MovieDetail>()
 
     init {

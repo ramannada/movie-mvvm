@@ -37,13 +37,9 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.MovieHolder>() {
         }
     }
 
-    fun addMovie(movies: List<Movie?>) {
-        data.addAll(movies)
-        notifyDataSetChanged()
-    }
-
-    fun clearMovie() {
+    fun data(movies: Set<Movie?>) {
         data.clear()
+        data.addAll(movies)
         notifyDataSetChanged()
     }
 
