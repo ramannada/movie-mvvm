@@ -1,6 +1,6 @@
 language: android
 sudo: required
-dist: bionic
+dist: xenial
 android:
   components:
   - platform-tools
