@@ -16,6 +16,7 @@ licenses:
 - google-gdk-license-.+
 before_script:
 - chmod +x gradlew
+- bundle update --bundler
 before_install:
 - "bundle install"
 - "./gradlew runChecksForDanger"
