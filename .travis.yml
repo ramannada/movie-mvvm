@@ -19,7 +19,7 @@ before_script:
 before_install:
 - "bundle install"
 - "bundle update --bundler"
-- "./gradlew runChecksForDanger"
 script:
+- "./gradlew runChecksForDanger"
 - "./gradlew assembleDebug"
 - "bundle exec danger"
