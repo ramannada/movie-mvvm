@@ -20,6 +20,6 @@ before_install:
 - "bundle install"
 - "bundle update --bundler"
 script:
+- "./gradlew :app:lint"
 - "./gradlew runChecksForDanger"
-- "./gradlew assembleDebug"
 - "bundle exec danger"
