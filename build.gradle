@@ -38,7 +38,4 @@ task clean(type: Delete) {
 task runChecksForDanger() {
     group = "Reporting"
     dependsOn ':app:lint'
-
-    def lintFile = new File("${project.rootDir}/build/reports/lint-results.xml")
-    if (!lintFile.exists()) lintFile.mkdirs()
 }
