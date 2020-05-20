@@ -1,0 +1,24 @@
+language: android
+sudo: required
+dist: xenial
+android:
+  components:
+  - platform-tools
+  - tools
+  - android-28
+  - build-tools-28.0.3
+  - extra-android-m2repository
+  - extra-google-google_play_services
+  - extra-google-m2repository
+licenses:
+- android-sdk-preview-license-c81a61d9
+- android-sdk-license-.+
+- google-gdk-license-.+
+before_script:
+- chmod +x gradlew
+before_install:
+- "bundle install"
+- "bundle update --bundler"
+script:
+- "./gradlew runChecksForDanger"
+- "bundle exec danger"
